@@ -44,11 +44,10 @@ namespace nyolckiralyno
         }
         public int Leptetes()
         {
-            hely = 0;
-
             javaslat.X = aktOszlop;
             javaslat.Y = hely++;
-            while (Joe(javaslat))
+
+            while (!Joe(javaslat))
             {
                 if (hely < 7)
                 {
@@ -108,7 +107,7 @@ namespace nyolckiralyno
             {
                 if (tabla[i, javaslat.Y] != 0)
                 {
-                    hiba($"1", $"{i},{javaslat.Y}");
+                    //hiba($"1", $"{i},{javaslat.Y}");
 
                     return false;
                 }
@@ -119,7 +118,7 @@ namespace nyolckiralyno
 
                 if (tabla[javaslat.X, i] != 0)
                 {
-                    hiba("2",$"{javaslat.X},{i}");
+                    //hiba("2",$"{javaslat.X},{i}");
 
                     return false;
                 }
@@ -133,7 +132,7 @@ namespace nyolckiralyno
                 {
                     if (((i - j) == fo) && (tabla[i,j] != 0))
                     {
-                        hiba("3", $"{i},{j}");
+                        //hiba("3", $"{i},{j}");
                         return false;
                     }
                 }
@@ -147,7 +146,7 @@ namespace nyolckiralyno
                 {
                     if ((i + j) == mellek && tabla[i, j] != 0)
                     {
-                        hiba("4", $"{i},{j}");
+                        //hiba("4", $"{i},{j}");
                         return false;
                     }
                 }
@@ -162,7 +161,13 @@ namespace nyolckiralyno
             Kiir();
             //Point javaslat = new Point(1, 2);
             //label2.Text = $"cc:{Joe(javaslat)}";
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             Leptetes();
+            label2.Text = $"cc:{Joe(javaslat)}";
         }
     }
 }
