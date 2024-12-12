@@ -61,9 +61,11 @@ namespace nyolckiralyno
                     javaslat.X = aktOszlop;
                     javaslat.Y = hely;
                 }
+
                 if (aktOszlop > 7)
                 {
                     hiba("5","");
+
                     return 8;
                 }
             }
@@ -91,13 +93,9 @@ namespace nyolckiralyno
             string title = "Hiba";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result = MessageBox.Show(message, title, buttons);
-            if (result == DialogResult.Yes)
+            if (result == DialogResult.No)
             {
                 this.Close();
-            }
-            else
-            {
-                // Do something
             }
         }
 
@@ -133,6 +131,7 @@ namespace nyolckiralyno
                     if (((i - j) == fo) && (tabla[i,j] != 0))
                     {
                         //hiba("3", $"{i},{j}");
+
                         return false;
                     }
                 }
@@ -147,11 +146,11 @@ namespace nyolckiralyno
                     if ((i + j) == mellek && tabla[i, j] != 0)
                     {
                         //hiba("4", $"{i},{j}");
+
                         return false;
                     }
                 }
             }
-
             return true;
         }
 
@@ -159,9 +158,7 @@ namespace nyolckiralyno
         {
             Kezd();
             Kiir();
-            //Point javaslat = new Point(1, 2);
-            //label2.Text = $"cc:{Joe(javaslat)}";
-            
+            label2.Text = $"cc:{Joe(javaslat)}";
         }
 
         private void button1_Click(object sender, EventArgs e)
