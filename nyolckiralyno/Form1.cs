@@ -22,7 +22,7 @@ namespace nyolckiralyno
         public int[,] tabla = new int[8, 8];
         public static int hely = 0;
         public Point javaslat = new Point(aktOszlop, hely);
-
+        
         public void Kezd()
         {
             for (int i = 0; i < tabla.GetLength(0); i++)
@@ -99,6 +99,53 @@ namespace nyolckiralyno
             }
         }
 
+        public void Vissza()
+        {
+            javaslat.X = aktOszlop--;
+            javaslat.Y = hely-- ;
+
+            while (!Joe(javaslat))
+            {
+                if (hely < 7)
+                {
+                    hely--;
+                    javaslat.Y = hely;
+                }
+                else
+                {
+                    aktOszlop--;
+                    hely = 0;
+                    javaslat.X = aktOszlop;
+                    javaslat.Y = hely;
+                }
+
+                if (aktOszlop > 7)
+                {
+                    hiba("6", "");
+
+                }
+            }
+            tabla[aktOszlop, hely] = 1;
+            statusz[aktOszlop] = hely;
+            Kiir();
+        }
+
+        public void listaba()
+        {
+            int hossz = listBox1.Items.Count;
+            int egesz = hossz / 40;
+            int utolsok = hossz % 40;
+            List<string> maradek = new List<string>();
+            for (int i = egesz*40; i < hossz; i++)
+            {
+                maradek.Add(listBox1.Items[i].ToString());
+            }
+            listBox1.Items.Clear();
+            for (int i = 0; i < maradek.Count; i++)
+            {
+                listBox1.Items.Add(maradek[i]);
+            }
+        }
         public bool Joe(Point javaslat) 
         {
             for (int i = 0; i < tabla.GetLength(0); i++)
@@ -161,10 +208,19 @@ namespace nyolckiralyno
             label2.Text = $"cc:{Joe(javaslat)}";
         }
 
+
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             Leptetes();
             label2.Text = $"cc:{Joe(javaslat)}";
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Vissza();
         }
     }
 }
