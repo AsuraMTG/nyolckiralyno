@@ -22,6 +22,7 @@ namespace nyolckiralyno
         public int[,] tabla = new int[8, 8];
         public static int hely = 0;
         public Point javaslat = new Point(aktOszlop, hely);
+        public Point aktKezd = new Point(0, 0);
         
         public void Kezd()
         {
@@ -208,14 +209,25 @@ namespace nyolckiralyno
             label2.Text = $"cc:{Joe(javaslat)}";
         }
 
-
+        public void elorelep()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                if (Joe(aktKezd))
+                {
+                    listBox1.Items.Add(aktKezd.X.ToString() + aktKezd.Y.ToString() + "jó");
+                }
+                listaba();
+            }
+        }
 
 
         private void button1_Click(object sender, EventArgs e)
         {
             Leptetes();
             label2.Text = $"cc:{Joe(javaslat)}";
-            
+            elorelep();
+            //listaba();
         }
 
         private void button2_Click(object sender, EventArgs e)

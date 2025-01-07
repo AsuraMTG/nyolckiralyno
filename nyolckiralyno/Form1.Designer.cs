@@ -78,9 +78,9 @@ namespace nyolckiralyno
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(223, 89);
+            this.listBox1.Location = new System.Drawing.Point(215, 12);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 84);
+            this.listBox1.Size = new System.Drawing.Size(62, 436);
             this.listBox1.TabIndex = 4;
             // 
             // Form1
