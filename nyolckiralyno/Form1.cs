@@ -23,7 +23,9 @@ namespace nyolckiralyno
         public static int hely = 0;
         public Point javaslat = new Point(aktOszlop, hely);
         public Point aktKezd = new Point(0, 0);
-        
+        int counter = 0;
+        int utolsoStatusz;
+
         public void Kezd()
         {
             for (int i = 0; i < tabla.GetLength(0); i++)
@@ -102,6 +104,7 @@ namespace nyolckiralyno
 
         public void Vissza()
         {
+            /*
             javaslat.X = aktOszlop--;
             javaslat.Y = hely-- ;
 
@@ -129,6 +132,15 @@ namespace nyolckiralyno
             tabla[aktOszlop, hely] = 1;
             statusz[aktOszlop] = hely;
             Kiir();
+            */
+            int i = 0;
+            while (statusz[i] < 8)
+            {
+                utolsoStatusz = i;
+                i++;
+            }
+
+            button2.Text = statusz[utolsoStatusz].ToString();
         }
 
         public void listaba()
@@ -204,6 +216,7 @@ namespace nyolckiralyno
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            label3.Text = "";
             Kezd();
             Kiir();
             label2.Text = $"cc:{Joe(javaslat)}";
@@ -227,6 +240,9 @@ namespace nyolckiralyno
             Leptetes();
             label2.Text = $"cc:{Joe(javaslat)}";
             elorelep();
+
+            label3.Text += $"{statusz[counter]}\n";
+            counter++;
             //listaba();
         }
 
