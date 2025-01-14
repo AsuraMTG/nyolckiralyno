@@ -44,6 +44,7 @@ namespace nyolckiralyno
             aktOszlop = 0;
             statusz[0] = 0;
             tabla[0, 0] = 1;
+
         }
         public int Leptetes()
         {
@@ -101,38 +102,9 @@ namespace nyolckiralyno
                 this.Close();
             }
         }
-
+        
         public void Vissza()
         {
-            /*
-            javaslat.X = aktOszlop--;
-            javaslat.Y = hely-- ;
-
-            while (!Joe(javaslat))
-            {
-                if (hely < 7)
-                {
-                    hely--;
-                    javaslat.Y = hely;
-                }
-                else
-                {
-                    aktOszlop--;
-                    hely = 0;
-                    javaslat.X = aktOszlop;
-                    javaslat.Y = hely;
-                }
-
-                if (aktOszlop > 7)
-                {
-                    hiba("6", "");
-
-                }
-            }
-            tabla[aktOszlop, hely] = 1;
-            statusz[aktOszlop] = hely;
-            Kiir();
-            */
             int i = 0;
             while (statusz[i] < 8)
             {
@@ -141,6 +113,11 @@ namespace nyolckiralyno
             }
 
             button2.Text = statusz[utolsoStatusz].ToString();
+
+            statusz[utolsoStatusz - 1] = 8;
+            statusz[utolsoStatusz] = 8;
+
+            
         }
 
         public void listaba()
@@ -220,6 +197,7 @@ namespace nyolckiralyno
             Kezd();
             Kiir();
             label2.Text = $"cc:{Joe(javaslat)}";
+
         }
 
         public void elorelep()
@@ -240,8 +218,11 @@ namespace nyolckiralyno
             Leptetes();
             label2.Text = $"cc:{Joe(javaslat)}";
             elorelep();
-
-            label3.Text += $"{statusz[counter]}\n";
+            label3.Text = "";
+            for (int i = 0; i < statusz.Length; i++)
+            {
+                label3.Text += $"{i + 1}. {statusz[i]}\n";
+            }
             counter++;
             //listaba();
         }
